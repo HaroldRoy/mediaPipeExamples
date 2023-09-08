@@ -6,7 +6,7 @@ from mediapipe.tasks.python import vision
 
 MARGIN = 10  # pixels
 ROW_SIZE = 10  # pixels
-FONT_SIZE = 1
+FONT_SIZE = 0.5
 FONT_THICKNESS = 1
 TEXT_COLOR = (255, 0, 0)  # red
 #Descargar el modelo de : https://developers.google.com/mediapipe/solutions/vision/object_detector#efficientdet-lite0_model_recommended
@@ -23,7 +23,7 @@ def visualize(image, detection_result) -> np.ndarray:
         probability = round(category.score, 2)
         result_text = category_name + ' (' + str(probability) + ')'
         text_location = (MARGIN + bbox.origin_x, MARGIN + ROW_SIZE + bbox.origin_y)
-        cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,
+        cv2.putText(image, result_text, text_location, cv2.FONT_ITALIC,
                     FONT_SIZE, TEXT_COLOR, FONT_THICKNESS)
 
     return image
